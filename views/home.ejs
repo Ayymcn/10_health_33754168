@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= appName %> - Home</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main>
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Welcome to <%= appName %></h2>
+      
+      
+    <div class="hero-logo">
+      <img src="/uni.png" alt="Goldsmiths, University of London logo">
+      <p class="hero-caption">
+        In partnership with Goldsmiths, University of London
+      </p>
+    </div>
+    <p>
+        <%= appName %> provides friendly, confidential healthcare support
+        for students and staff at Goldsmiths, University of London. Our team helps
+        you stay healthy so you can focus on your studies and campus life.
+      </p>
+      <p>
+        Whether you need a routine check‑up, support with ongoing health conditions,
+        or wellbeing advice, you can book an appointment online or register as a
+        new patient in just a few steps.
+      </p>
+      <p>
+        We work closely with university wellbeing and support services to make sure
+        you get the right care at the right time, on campus or through local NHS
+        services.
+      </p>
+      <a href="/appointments/book" class="btn-primary">Book an appointment</a>
+      <a href="/patients/register" class="btn-secondary">Register as a patient</a>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registered Patients - <%= appName %></title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main>
+    <h2>Registered Patients</h2>
+
+    <p>
+    This page lists everyone who has registered with <%= appName %>.
+    Reception staff can quickly look up contact details, check student IDs,
+    and keep notes up to date before or after appointments.
+  </p>
+    <% if (error) { %>
+      <p class="error"><%= error %></p>
+    <% } %>
+
+    <% if (patients.length === 0) { %>
+      <p>No patients registered yet.</p>
+    <% } else { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>DOB</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Student ID</th>
+            <th>Notes</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% patients.forEach(p => { %>
+            <tr>
+              <td><%= p.full_name %></td>
+              <td><%= p.date_of_birth.toISOString().slice(0,10) %></td>
+              <td><%= p.email %></td>
+              <td><%= p.phone %></td>
+              <td><%= p.student_id || '' %></td>
+              <td><%= p.notes || '' %></td>
+              <td>
+                <form action="/patients/<%= p.id %>/delete" method="post" onsubmit="return confirm('Delete this patient?');">
+                  <button type="submit">Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } %>
+  </main>
+</body>
+</html>

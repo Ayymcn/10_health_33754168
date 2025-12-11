@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register as Patient - <%= appName %></title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main>
+    <h2>Register as a GoldCare Patient</h2>
+
+    <p>
+    Use this form to register with <%= appName %> before your first
+    appointment. Providing accurate contact details helps
+    the clinic team link your records and contact you if anything changes.
+  </p>
+    <% if (error) { %>
+      <p class="error"><%= error %></p>
+    <% } %>
+
+    <% if (success) { %>
+      <p class="success"><%= success %></p>
+    <% } %>
+
+    <form action="/patients/register" method="post">
+      <label for="full_name">Full name *</label>
+      <input type="text" id="full_name" name="full_name" required>
+
+      <label for="date_of_birth">Date of birth *</label>
+      <input type="date" id="date_of_birth" name="date_of_birth" required>
+
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone *</label>
+      <input type="text" id="phone" name="phone" required>
+
+      <label for="notes">Notes (optional)</label>
+      <textarea id="notes" name="notes"></textarea>
+
+      <button type="submit">Register</button>
+    </form>
+  </main>
+</body>
+</html>

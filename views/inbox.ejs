@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Messages Inbox - <%= appName %></title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <p>
+    This inbox shows all messages sent through the Contact page so that the
+    GoldCare reception team can keep track of routine questions and follow up
+    with students and staff in one place.
+  </p>
+  <main>
+    <h2>Messages inbox</h2>
+
+    <% if (error) { %>
+      <p class="error"><%= error %></p>
+    <% } %>
+
+    <% if (!messages || messages.length === 0) { %>
+      <p>No contact messages yet.</p>
+    <% } else { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Received</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% messages.forEach(m => { %>
+            <tr>
+              <td><%= m.created_at %></td>
+              <td><%= m.name %></td>
+              <td><%= m.email %></td>
+              <td><%= m.message %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } %>
+  </main>
+</body>
+</html>

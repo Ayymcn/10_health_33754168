@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact <%= appName %></title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main>
+    <% if (error) { %>
+    <p class="error"><%= error %></p>
+  <% } %>
+
+  <% if (success) { %>
+    <p class="success"><%= success %></p>
+  <% } %>
+  <section class="page-header">
+    <h2>Contact <%= appName %></h2>
+    <p>
+      If you have questions about appointments, registration or your health while
+      studying at Goldsmiths, University of London, you can contact the GoldCare
+      team using the details below.
+    </p>
+  </section>
+
+  <section class="two-column contact-grid">
+    <div>
+      <h3>Clinic details</h3>
+      <p>
+        <strong>Location:</strong><br>
+        <%= appName %><br>
+        On campus at Goldsmiths, University of London<br>
+        New Cross, London SE14
+      </p>
+
+      <p>
+        <strong>Phone:</strong><br>
+        0200 000 0000 <br>
+        <span class="hint">
+          For urgent medical problems when the clinic is closed, use NHS 111 or call 999 in an emergency.
+        </span>
+      </p>
+
+      <p>
+        <strong>Email:</strong><br>
+        goldcare@goldsmiths.ac.uk
+      </p>
+
+      <h3>Opening hours</h3>
+      <p>
+        <strong>Term time:</strong><br>
+        Monday – Friday, 9:00am – 5:30pm
+      </p>
+      <p>
+        <strong>Vacations:</strong><br>
+        Monday – Friday, 9:00am – 4:30pm
+      </p>
+      <p class="hint">
+        Opening hours may change on bank holidays or during exam periods; check clinic notices for updates.
+      </p>
+    </div>
+
+    <div>
+      <h3>Send us a message</h3>
+      <p>
+        For routine, non‑urgent queries about registration or existing appointments,
+        you can send us a message using this simple form. Please do not use this
+        form for emergencies or urgent medical issues.
+      </p>
+
+      <form method="post" action="/contact">
+        <div class="form-row">
+          <label for="name">Full name</label>
+          <input id="name" name="name" type="text" required>
+        </div>
+
+        <div class="form-row">
+          <label for="email">Goldsmiths email</label>
+          <input id="email" name="email" type="email" required>
+        </div>
+
+        <div class="form-row">
+          <label for="message">How can we help?</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+
+        <button type="submit">Send message</button>
+      </form>
+
+      <p class="hint">
+        We aim to respond to routine enquiries within 2–3 working days. For time‑sensitive medical
+        issues, please phone the clinic or use NHS services instead.
+      </p>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>

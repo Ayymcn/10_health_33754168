@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Audit Log - <%= appName %></title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main>
+    <h2>Login Audit Log</h2>
+
+    <% if (error) { %>
+      <p class="error"><%= error %></p>
+    <% } %>
+
+    <% if (!entries || entries.length === 0) { %>
+      <p>No login audit entries yet.</p>
+    <% } else { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Username</th>
+            <th>Success</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% entries.forEach(e => { %>
+            <tr>
+              <td><%= e.attempt_time %></td>
+
+              <td><%= e.username %></td>
+              <td><%= e.success ? 'Yes' : 'No' %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } %>
+  </main>
+</body>
+</html>

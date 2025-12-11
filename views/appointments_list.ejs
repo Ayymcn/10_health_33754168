@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Appointments - GoldCare Clinic</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main>
+    <h2>Appointments</h2>
+
+    <p>
+    This list helps the reception team see upcoming and past appointments at a
+    glance, filter by patient name or date, and make sure each clinic session
+    runs smoothly without double‑booking.
+  </p>
+    <% if (error) { %>
+      <p class="error"><%= error %></p>
+    <% } %>
+
+    <form method="get" action="/appointments" class="search-form">
+      <label for="search_name">Patient name:</label>
+      <input type="text" id="search_name" name="search_name" value="<%= search_name || '' %>">
+
+      <label for="search_date">Date:</label>
+      <input type="date" id="search_date" name="search_date" value="<%= search_date || '' %>">
+
+      <button type="submit">Search</button>
+    </form>
+
+    <% if (!appointments || appointments.length === 0) { %>
+      <p>No appointments found.</p>
+    <% } else { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Patient</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Reason</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% appointments.forEach(a => { %>
+            <tr>
+              <td><%= a.patient_name %></td>
+              <td><%= a.appointment_date.toISOString().slice(0,10) %></td>
+              <td><%= a.appointment_time.toString().slice(0,5) %></td>
+              <td><%= a.email %></td>
+              <td><%= a.phone %></td>
+              <td><%= a.reason || '' %></td>
+              <td><%= a.status %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } %>
+  </main>
+</body>
+</html>

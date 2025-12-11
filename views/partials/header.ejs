@@ -1,0 +1,26 @@
+<header class="site-header">
+  <div class="nav-container">
+  <a href="/" class="brand">
+    <img src="/modifiedlogo.png" alt="GoldCare Clinic logo" class="brand-logo">
+
+  </a>
+  <nav class="main-nav">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact Us</a>
+    <a href="/patients/register">Register as Patient</a>
+    <a href="/appointments/book">Book Appointment</a>
+
+    <% if (currentUser && currentUser.id) { %>
+      <a href="/patients">Patients List</a>
+      <a href="/appointments">Appointments List</a>
+      <a href="/audit-log">Login Audit</a>
+      <a href="/inbox">Messages</a>
+      <span class="nav-user">Logged in as <%= currentUser.username %></span>
+      <a href="/logout">Logout</a>
+    <% } else { %>
+      <a href="/login">Receptionist Login</a>
+    <% } %>
+  </nav>
+  </div>
+</header>

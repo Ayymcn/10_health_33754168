@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Appointment - <%= appName %></title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+
+  <main>
+    <h2>Book an Appointment</h2>
+
+    <p>
+    You can request a routine appointment by choosing a suitable date and time
+    below. Once your request is submitted, the clinic team will review it and
+    confirm your booking or offer an alternative slot if needed.
+  </p>
+    <% if (error) { %>
+      <p class="error"><%= error %></p>
+    <% } %>
+
+    <% if (success) { %>
+      <p class="success"><%= success %></p>
+    <% } %>
+
+    <form action="/appointments/book" method="post">
+      <label for="patient_name">Full name *</label>
+      <input type="text" id="patient_name" name="patient_name" required>
+
+      <label for="email">Email *</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone *</label>
+      <input type="text" id="phone" name="phone" required>
+
+      <label for="appointment_date">Appointment date *</label>
+      <input type="date" id="appointment_date" name="appointment_date" required>
+
+      <label for="appointment_time">Appointment time *</label>
+      <input type="time" id="appointment_time" name="appointment_time" required>
+
+      <label for="reason">Reason (optional)</label>
+      <textarea id="reason" name="reason"></textarea>
+
+      <button type="submit">Book Appointment</button>
+    </form>
+  </main>
+</body>
+</html>
