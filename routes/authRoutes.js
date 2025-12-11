@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+const basePath = process.env.HEALTH_BASE_PATH || '';
 // GET login form
 router.get('/login', (req, res) => {
     res.render('login', { error: null});
@@ -62,7 +63,7 @@ router.post('/login', (req, res) => {
                 [username, 0]
             )
 
-            const basePath = process.env.HEALTH_BASE_PATH || '';
+            
 
             req.session.userId = user.id;
             req.session.username = user.username;

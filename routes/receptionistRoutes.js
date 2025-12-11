@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+const basePath = process.env.HEALTH_BASE_PATH || '';
 // middleware to require login
 function requireLogin(req, res, next) {
     if (!req.session || !req.session.userId) {
