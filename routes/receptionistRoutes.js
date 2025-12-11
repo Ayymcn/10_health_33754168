@@ -4,7 +4,7 @@ const router = express.Router();
 // middleware to require login
 function requireLogin(req, res, next) {
     if (!req.session || !req.session.userId) {
-        return res.redirect('/login');
+        return res.redirect(basePath + '/login');
     }
     next();
 }
@@ -39,7 +39,7 @@ router.post('/patients/:id/delete', requireLogin, (req, res) => {
                 console.error(err);
                 // adding an errror message later
             }
-            res.redirect('/patients');
+            res.redirect(basePath + '/patients');
         }
     );
 });

@@ -62,11 +62,13 @@ router.post('/login', (req, res) => {
                 [username, 0]
             )
 
+            const basePath = process.env.HEALTH_BASE_PATH || '';
+
             req.session.userId = user.id;
             req.session.username = user.username;
             req.session.role = user.role;
 
-            res.redirect('/patients');
+            res.redirect(basePath + '/patients');
         }
     );
 });
@@ -74,7 +76,7 @@ router.post('/login', (req, res) => {
 // GET logout
 router.get('/logout', (req, res) => {
     req.session.destroy(() => {
-        res.redirect('/');
+        res.redirect(basePath + '/');
     });
 });
 

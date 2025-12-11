@@ -1,10 +1,11 @@
 const express = require('express');
 const path = require('path');
+
+require('dotenv').config();
+
 const mysql = require('mysql2');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
-
-require('dotenv').config();
 
 const publicRoutes = require('./routes/publicRoutes');
 const authRoutes = require('./routes/authRoutes');
