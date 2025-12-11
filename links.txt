@@ -1,0 +1,10 @@
+home=https://doc.gold.ac.uk/usr/311/
+about=https://doc.gold.ac.uk/usr/311/about
+contact=https://doc.gold.ac.uk/usr/311/contact
+registering=https://doc.gold.ac.uk/usr/311/patients/register
+booking_appointment=https://doc.gold.ac.uk/usr/311/appointments/book
+receptionist_login=https://doc.gold.ac.uk/usr/311/login
+patient_list=https://doc.gold.ac.uk/usr/311/patients
+appointment_list=https://doc.gold.ac.uk/usr/311/appointments
+login_audit=https://doc.gold.ac.uk/usr/311/audit-log
+inbox=https://doc.gold.ac.uk/usr/311/inbox
